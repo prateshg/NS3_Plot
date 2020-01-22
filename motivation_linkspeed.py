@@ -18,7 +18,7 @@ fig.text(0.8,0.4, "DCQCN", ha="center",fontsize=17)
 ax1.set_ylim([0.8,1.003])
 ax1.set_xlim([0,20])
 ax2.set_xlim([0,20])
-Buffer_Size1 = [0,0,1090,1090,1090,1090,1090,2180,2180,2180,2180,2180,2180,2180,2180,3270,3270,3270,3270,3270,3270,3270,3270,4360,4360,4360,4360,4360,4360,4360,4360,4360,5450,5450,5450,5450,5450,5450,5450,5883,6540,6540,6540,6540,6540,6540,7630,7630,7630,7630,7630,7630,8720,8720,8720,8720,8720,9810,9810,9810,10900,10900,10900,11990,11990,11990,13080,13080,14170,14170,15260,16350,16350,17440,18530,20710,22890,25070,30520,49050,90470,98100,100280,102460,103550,105730,106820,109000,110090,112270,115540,118810,125350,145506,199470,208190,220180,296480,649640,1630668]
+Buffer_Size1 = [0,0,0,0,1090,1090,1090,1090,1090,1090,2180,2180,2180,2180,2180,2180,2180,2180,3270,3270,3270,3270,3270,3270,3270,3270,3270,4360,4360,4360,4360,4360,4360,4360,4360,4360,5450,5450,5450,5450,5450,5450,5450,6540,6540,6540,6540,6540,6540,6540,7630,7630,7630,7630,7630,8720,8720,8720,8720,9323,9810,9810,9810,10900,10900,10900,11990,11990,12608,13080,13080,14170,15260,15260,16350,17440,18530,19173,20710,21800,22890,25070,27250,28985,31179,33790,35970,38150,41420,44690,47960,52320,56680,64091,74120,92650,136250,233260,634507,1631758]
 CDF = [0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.61,0.62,0.63,0.64,0.65,0.66,0.67,0.68,0.69,0.7,0.71,0.72,0.73,0.74,0.75,0.76,0.77,0.78,0.79,0.8,0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99, 1.0]
 Buffer_Size1 = np.array(Buffer_Size1)
 ax1.plot(Buffer_Size1/(1e6), CDF, '-.', color='green', label='10 Gbps')
@@ -174,7 +174,7 @@ Speed = [10,40,100]
 SlowDown = [37.4,5.8,4.3]
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 
-SlowDown = [19.5,19.2,19.4]
+SlowDown = [18.17,19.4,19.7]
 plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
 
 SlowDown = [21.8,25.9,29.8]
@@ -245,6 +245,53 @@ plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=3, mode="expand",
 plt.tight_layout()
 plt.xlim([0,40])
 
+#Qdealy incast
 
+fig, (ax1,ax2)=plt.subplots(1,2,sharey=True,figsize=(8,3))#,gridspec_kw={'hspace':0.1,'wspace':0.1})
+ax1.set_ylabel("CDF", fontsize=17)
+fig.text(0.5,0.05, "Queing Delay (us)", ha="center",fontsize=17)
+fig.text(0.3,0.4, "HPCC", ha="center",fontsize=17)
+fig.text(0.8,0.4, "DCQCN", ha="center",fontsize=17)
+ax1.set_ylim([0.8,1.003])
+#ax1.set_xlim([0,20])
+#ax2.set_xlim([0,20])
+Buffer_Size1 = [4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 11, 12, 15, 19, 27, 43]
+CDF = [0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99]
+Buffer_Size1 = np.array(Buffer_Size1)
+ax1.plot(Buffer_Size1, CDF, '-.', color='green', label='10 Gbps')
+
+Buffer_Size2 = [2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 7, 8, 9, 11, 13, 22, 73]
+Buffer_Size2 = np.array(Buffer_Size2)
+ax1.plot(Buffer_Size2, CDF, '-', color='blue', label='40 Gbps')
+
+Buffer_Size3 = [3, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10, 12, 16, 24, 47, 80, 293]
+Buffer_Size3 = np.array(Buffer_Size3)
+ax1.plot(Buffer_Size3, CDF, '--', color='red', label='100 Gbps')
+for tick in ax1.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax1.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+
+handles, labels = ax1.get_legend_handles_labels()
+plt.figlegend(handles, labels, loc='upper center', ncol=3, labelspacing=0.0, fontsize=16, frameon=False)
+
+Buffer_Size1 = [10, 10, 10, 11, 11, 12, 12, 13, 14, 15, 16, 17, 19, 21, 27, 56, 75, 82, 96]
+CDF = [0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99]
+Buffer_Size1 = np.array(Buffer_Size1)
+ax2.plot(Buffer_Size1, CDF, '-.', color='green', label='10 Gbps')
+
+Buffer_Size2 = [8, 9, 9, 10, 10, 11, 12, 12, 13, 14, 15, 16, 18, 19, 22, 26, 33, 66, 323]
+Buffer_Size2 = np.array(Buffer_Size2)
+ax2.plot(Buffer_Size2, CDF, '-', color='blue', label='40 Gbps')
+
+Buffer_Size3 = [10, 10, 11, 12, 13, 13, 14, 16, 17, 19, 21, 24, 29, 39, 62, 96, 176, 451, 714]
+Buffer_Size3 = np.array(Buffer_Size3)
+ax2.plot(Buffer_Size3, CDF, '--', color='red', label='100 Gbps')
+fig.tight_layout(rect=[0.0,0.1,1,0.9])
+plt.plot()
 
 plt.show()
