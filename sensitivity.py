@@ -79,41 +79,69 @@ ax.set_xticklabels(labels)
 ax.legend(prop={'size': 16})
 plt.tight_layout()
 
-plt.figure(figsize=(5,3))
-plt.ylabel("FCT SlowDown", fontsize=17)
-plt.xlabel("# physical queues", fontsize=17)
-#plt.ylim([1,4])
-plt.xscale('log')
-plt.yscale('log')
-Speed = [8,16,32,64,128]
-SlowDown = [3.81,1.147,1.147,1.147,1.149]
-SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-', color='blue', marker='o', label='60%')
-SlowDown = [7.66, 1.37, 1.206, 1.22, 1.206]
-SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-.', color='green', marker='^', label='70%')
-SlowDown = [12.2, 4.97, 1.3, 1.33, 1.3]
-SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '--', color='red', marker='s', label='80%')
-SlowDown = [17.52,14.09, 2.91, 1.54, 1.51]
-SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  ':', color='orange', marker='<', label='90%')
-ax = plt.gca()
-ax.get_xaxis().set_ticks([8,16,32,64,128], minor=True)
-ax.get_xaxis().set_ticks([], minor=False)
-ax.xaxis.set_minor_formatter(mticker.ScalarFormatter())
-ax.xaxis.get_minor_formatter().set_scientific(False)
-ax.xaxis.set_major_formatter(mticker.ScalarFormatter())
-ax.xaxis.get_major_formatter().set_scientific(False)
-for tick in ax.xaxis.get_major_ticks():
-	tick.label.set_fontsize(14)
-for tick in ax.xaxis.get_minor_ticks():
-	tick.label.set_fontsize(14)
+fig, (ax1,ax2)=plt.subplots(1,2,sharey=True,figsize=(8,3))#,gridspec_kw={'hspace':0.1,'wspace':0.1})
+ax1.set_ylabel("FCT SlowDown", fontsize=17)
+fig.text(0.5,0.05, "FlowSize (KB)", ha="center",fontsize=17)
+ax1.set_xscale('log')
+ax2.set_xscale('log')
+ax1.set_yscale('log')
+fig.text(0.4,0.3, "60 %", ha="center",fontsize=17)
+fig.text(0.9,0.3, "90%", ha="center",fontsize=17)
+
+size = [3,12,48,192,768,3072, 12288]
+SlowDown = [3.8128132028568045, 3.9942757009345793, 8.022554347826087, 9.698497267759564, 12.17308282208589, 12.374356659142212, 11.724158078763342]
+ax1.plot(Flow_Size, SlowDown, '--', color='red', label='8')
+
+SlowDown = [1.1472790715909982, 1.7331473214285715, 4.159228187919463, 6.105347222222222, 9.041122611464969, 9.954905677009872, 9.68645027451959]
+ax1.plot(Flow_Size, SlowDown,  '-.', color='green', label='16')
+
+SlowDown = [1.1479761904761905, 1.7425438596491227, 4.078298611111111, 6.254166666666666, 9.43569587628866, 10.530746336996337, 9.637086563307493]
+ax1.plot(Flow_Size, SlowDown, '-', color='blue', label='32')
+
+SlowDown = [1.1474828934506354, 1.6935416666666667, 4.225775862068965, 6.18448275862069, 8.916568914956011, 10.403214097148892, 10.734796187537329]
+ax1.plot(Flow_Size, SlowDown, '-.', color='brown', label='64')
+
+SlowDown = [1.149798575432041, 1.7757954545454546, 4.5553294573643415, 6.599954212454213, 10.134437639198218, 12.228507615700059, 12.509318722831711]
+ax1.plot(Flow_Size, SlowDown, '--', color='orange', label='128')
+ax = ax1
+ax.get_yaxis().set_ticks([1,2,4,8,16,32,64], minor=True)
+ax.get_yaxis().set_ticks([], minor=False)
+ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_minor_formatter().set_scientific(False)
+ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_major_formatter().set_scientific(False)
 for tick in ax.yaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
+for tick in ax.yaxis.get_minor_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
 
-plt.legend(bbox_to_anchor=(0.1, 1.02, 0.9, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 16}, frameon=False)
-plt.tight_layout()
+handles, labels = ax1.get_legend_handles_labels()
+plt.figlegend(handles, labels, loc='upper center', ncol=5, labelspacing=0.0, fontsize=16, frameon=False)
+
+SlowDown = [17.527766856693532, 17.6634009009009, 38.11494932432432, 52.20625, 73.07389053254438, 63.24658624229979, 47.88624551971326]
+ax2.plot(Flow_Size, SlowDown, '--', color='red', label='8')
+
+SlowDown = [14.094274432379072, 15.37340909090909, 28.703033088235294, 38.24234104046243, 47.41044161676647, 45.70361538461538, 31.387137989778534]
+ax2.plot(Flow_Size, SlowDown,  '-.', color='green', label='16')
+
+SlowDown = [2.9154604491041387, 5.008912037037037, 13.27986577181208, 19.267457805907174, 27.044096091205212, 31.09391979301423, 29.585286492954]
+ax2.plot(Flow_Size, SlowDown, '-', color='blue', label='32')
+
+SlowDown = [1.5451145736072205, 3.691521739130435, 13.171392617449664, 20.80475663716814, 32.67304794520548, 40.515439142461965, 37.871320093457946]
+ax2.plot(Flow_Size, SlowDown, '-.', color='brown', label='64')
+
+SlowDown = [1.5100530509209955, 3.4297566371681416, 11.285799319727891, 18.317561983471073, 26.930865384615384, 33.156924643584524, 31.25363049878767]
+ax2.plot(Flow_Size, SlowDown, '--', color='orange', label='128')
+
+
+
+fig.tight_layout(rect=[0.0,0.1,1,0.9])
 
 
 plt.figure(figsize=(4,3))

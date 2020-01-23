@@ -11,8 +11,8 @@ from matplotlib.ticker import ScalarFormatter
 #Google 65+INCAST
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down", fontsize=17)
-plt.xlabel("Flow Size (KB)", fontsize=17)
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
 plt.xscale('log')
 plt.yscale('log')
 plt.gca().set_ylim(bottom=1)
@@ -48,7 +48,7 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
+plt.legend(bbox_to_anchor=(-0.3, 1.02, 1.3, 1.02), loc=3, ncol=3, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
 plt.figure(figsize=(4,3))
@@ -110,7 +110,7 @@ for tick in ax.xaxis.get_major_ticks():
 for tick in ax.yaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
 ax.set_xticks(x)
-ax.set_xticklabels(labels, rotation='vertical')
+ax.set_xticklabels(labels, rotation=45)
 ax.legend(bbox_to_anchor=(-0.15, 0.97, 1.23, 0.97), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
 
 fig.tight_layout()
@@ -136,7 +136,7 @@ for tick in ax.xaxis.get_major_ticks():
 for tick in ax.yaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
 ax.set_xticks(x)
-ax.set_xticklabels(labels,rotation='vertical')
+ax.set_xticklabels(labels,rotation=45)
 ax.legend(bbox_to_anchor=(-0.15, 0.97, 1.23, 0.97), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
 
 fig.tight_layout()
@@ -319,22 +319,22 @@ plt.ylabel("FCT Slow Down", fontsize=17)
 plt.xlabel("Flow Size (KB)", fontsize=17)
 plt.xscale('log')
 plt.yscale('log')
-plt.gca().set_ylim(bottom=1)
 
 Flow_Size = [3,12,48,192,768,3072,12288]
 SlowDown = [9.431223180189757, 11.410630841121495, 37.67939189189189, 42.98262614678899, 37.55050623052959, 16.928660669665167, 11.916141836464673]
 plt.plot(Flow_Size, SlowDown, '-', color='blue', label='BFC')
 
-#SlowDown = [37.339306872037916, 44.950000000000003, 24.021232876712329, 23.926445578231291, 32.546551724137935, 41.574526515151518, 35.05040255796834]
-#plt.plot(Flow_Size, SlowDown, '--', color='red', label='HPCC+InfBuf')
 
 SlowDown = [65.612663670119218, 62.340771028037381, 48.514212328767123, 43.872933070866139, 54.530007530120479, 53.76351893095768, 44.550896421706341]
 plt.plot(Flow_Size, SlowDown,  '-.', color='green', label='HPCC+PFC')
 
+SlowDown = [27.163855104666123, 26.366118421052633, 27.672185430463575, 37.515270618556698, 59.273804012345678, 53.780122494432071, 47.079254336081888]
+plt.plot(Flow_Size, SlowDown,  '--', color='red', label='HPCC+SFQ')
+
 SlowDown = [36.847081243335047, 45.123967889908258, 24.057619863013699, 24.06639344262295, 35.409131355932203, 42.810354573484069, 35.726523323615162]
 plt.plot(Flow_Size, SlowDown, ':', color='black', label='HPCC+Retr.')
 ax = plt.axes()
-ax.get_yaxis().set_ticks([1,2,4,8,16,32,64,128], minor=True)
+ax.get_yaxis().set_ticks([8,16,32,64,128], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
@@ -346,7 +346,96 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(bbox_to_anchor=(-0.22, 1.02, 1.24, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
+plt.legend(bbox_to_anchor=(-0.24, 1.02, 1.27, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
 plt.tight_layout()
+
+
+#Google 65+Incast
+
+fig, (ax1,ax2, ax3)=plt.subplots(1,3,sharey=True,figsize=(8,3))#,gridspec_kw={'hspace':0.1,'wspace':0.1})
+ax1.set_ylabel("FCT SlowDown", fontsize=17)
+fig.text(0.5,0.05, "FlowSize (KB)", ha="center",fontsize=17)
+ax1.set_xscale('log')
+ax2.set_xscale('log')
+ax3.set_xscale('log')
+ax1.set_yscale('log')
+fig.text(0.3,0.27, "Avg.", ha="center",fontsize=17)
+fig.text(0.6,0.27, "Median", ha="center",fontsize=17)
+fig.text(0.9,0.27, "95pct", ha="center",fontsize=17)
+
+size = [1,2,4,8,16,64,256,1024,4096]
+SlowDown = [1.4434902840632073, 1.4948537336009562, 1.5560692252835167, 1.739317516887139, 2.0692100224309486, 2.8176547905749083, 4.027230358807814, 4.316279395095557, 4.13383555139065]
+ax1.plot(size,SlowDown, '-', color='blue', label='BFC')
+
+SlowDown = [5.689795231571951, 5.514015414621698, 5.511455260124527, 5.434357075428677, 5.328662608053012, 5.049181164142682, 5.809371189404491, 15.485096194053536, 26.143191945424856]
+ax1.plot(size,SlowDown, '-.', color='green', label='HPCC')
+
+SlowDown = [12.46499123483775, 12.24301587168818, 12.199008741217188, 12.168855905562738, 11.786256730448079, 10.88501815382898, 9.209052652887305, 9.994183253036228, 16.017162918082377]
+ax1.plot(size,SlowDown, '--', color='red', label='DCQCN')
+
+SlowDown = [1.5829601047262944, 1.6379583462116285, 1.6992269549527024, 1.8632458284867404, 2.1369455841129583, 2.8414464931881294, 4.143080270479011, 4.437551987372309, 3.9557714936148196]
+ax1.plot(size,SlowDown, ':', color='black', label='IdealFQ')
+
+SlowDown = [9.221410267997754, 8.915608484018481, 8.878641594060678, 8.691147239429265, 8.421406703655402, 7.71745759307902, 7.298471771214754, 11.363149339653178, 11.526892074642403]
+ax1.plot(size,SlowDown, '--', color='orange', label='DCTCP')
+
+ax = ax1
+ax.get_yaxis().set_ticks([1,2,4,8,16,32,64], minor=True)
+ax.get_yaxis().set_ticks([], minor=False)
+ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_minor_formatter().set_scientific(False)
+ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_major_formatter().set_scientific(False)
+for tick in ax.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.yaxis.get_minor_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax2.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax3.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax3.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+
+handles, labels = ax1.get_legend_handles_labels()
+plt.figlegend(handles, labels, loc='upper center', ncol=5, labelspacing=0.0, fontsize=14, frameon=False)
+
+SlowDown = [1.0305970149253731, 1.0526190476190476, 1.0820754716981131, 1.1405681818181819, 1.2458705357142856, 1.5012396694214876, 2.2069368131868132, 2.9507190265486725, 3.529538084315431]
+ax2.plot(size,SlowDown, '-', color='blue', label='BFC')
+
+SlowDown = [1.1548913043478262, 1.1747619047619047, 1.2123820754716981, 1.2835585585585585, 1.3984649122807018, 1.6636278195488723, 2.2635964912280704, 6.5563785046728968, 23.403305865330321]
+ax2.plot(size,SlowDown, '-.', color='green', label='HPCC')
+
+SlowDown = [1.3000427588401415, 1.3172619047619047, 1.3481132075471698, 1.4100694444444444, 1.5057112068965517, 1.7258278145695365, 2.1356142241379312, 2.635556464811784, 5.387299035369775]
+ax2.plot(size,SlowDown, '--', color='red', label='DCQCN')
+
+SlowDown = [1.0329027925899594, 1.056309523809524, 1.0877358490566038, 1.151590909090909, 1.26796875, 1.5418445121951219, 2.2288590604026846, 2.918816348195329, 3.2878867206092335]
+ax2.plot(size,SlowDown, ':', color='black', label='IdealFQ')
+
+SlowDown = [1.3319243637232645, 1.3420238095238095, 1.372196261682243, 1.4271788990825689, 1.535593220338983, 1.7760135135135136, 2.2744117647058824, 3.7937500000000002, 9.0381369112274115]
+ax2.plot(size,SlowDown, '--', color='orange', label='DCTCP')
+
+
+SlowDown = [1.115368909605195, 1.2026190476190477, 1.3454009433962264, 1.6336363636363636, 2.136853448275862, 3.75927734375, 6.897304832713755, 9.080030181086519, 8.1189130267016]
+ax3.plot(size,SlowDown, '-', color='blue', label='BFC')
+
+SlowDown = [37.040001792685842, 35.50416666666667, 35.292688679245281, 34.474541284403671, 32.932190265486724, 28.925590551181102, 26.35053475935829, 62.299149761336515, 61.4918503630705]
+ax3.plot(size,SlowDown, '-.', color='green', label='HPCC')
+
+SlowDown = [75.648428203094014, 73.716071428571425, 72.785377358490564, 71.848536036036037, 68.830022321428572, 60.213306451612901, 47.230890804597699, 45.984729916897507, 62.95777847571189]
+ax3.plot(size,SlowDown, '--', color='red', label='DCQCN')
+
+SlowDown = [1.1526261801378321, 1.3083333333333333, 1.5186320754716982, 1.9546296296296297, 2.727991452991453, 4.683540372670808, 8.042952127659575, 9.29928892215569, 8.07]
+ax3.plot(size,SlowDown, ':', color='black', label='IdealFQ')
+
+SlowDown = [52.980573895378363, 50.947857142857146, 50.504716981132077, 49.243119266055047, 47.135760869565217, 41.459038461538462, 35.489505347593585, 50.171257961783439, 29.43841886269070]
+ax3.plot(size,SlowDown, '--', color='orange', label='DCTCP')
+
+
+fig.tight_layout(rect=[0.0,0.1,1,0.9])
 
 plt.show()
