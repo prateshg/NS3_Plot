@@ -10,8 +10,8 @@ from matplotlib.ticker import ScalarFormatter
 
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down", fontsize=17)
-plt.xlabel("Flow Size (KB)", fontsize=17)
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
 plt.xscale('log')
 plt.yscale('log')
 plt.gca().set_ylim(bottom=1)
@@ -39,6 +39,7 @@ plt.plot(Flow_Size, SlowDown, ':', color='black', label='IdealFQ')
 ax = plt.axes()
 ax.get_yaxis().set_ticks([1,2,4,8,16,32,64,128], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
+plt.ylim([1,160])
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
 ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
@@ -49,10 +50,10 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
+plt.legend(handlelength=1.5,bbox_to_anchor=(-0.2, 1.02, 1.2, 1.02), loc=3, ncol=3, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
-fig, ax = plt.subplots(figsize=(4,4))
+fig, ax = plt.subplots(figsize=(3,3))
 plt.yscale('log')
 plt.ylim([0.1,11])
 labels = ['8', '16', '32', '64', '128']
@@ -66,27 +67,27 @@ rects1 = ax.bar(x + width/2, collision, width, label='collision')
 
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_ylabel('% of collisions', fontsize=19 )
-ax.set_xlabel('# Physical Q', fontsize=19 )
+ax.set_ylabel('% of collisions', fontsize=16 )
+ax.set_xlabel('# Physical Q', fontsize=16 )
 #ax.set_title('Scores by group and gender')
 for tick in ax.xaxis.get_major_ticks():
-    tick.label.set_fontsize(16)
+    tick.label.set_fontsize(14)
 for tick in ax.yaxis.get_major_ticks():
-    tick.label.set_fontsize(16)
+    tick.label.set_fontsize(14)
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 
-ax.legend(prop={'size': 16})
+#ax.legend(prop={'size': 14})
 plt.tight_layout()
 
 fig, (ax1,ax2)=plt.subplots(1,2,sharey=True,figsize=(8,3))#,gridspec_kw={'hspace':0.1,'wspace':0.1})
-ax1.set_ylabel("FCT SlowDown", fontsize=17)
-fig.text(0.5,0.05, "FlowSize (KB)", ha="center",fontsize=17)
+ax1.set_ylabel("FCT SlowDown", fontsize=16)
+fig.text(0.5,0.05, "FlowSize (KB)", ha="center",fontsize=16)
 ax1.set_xscale('log')
 ax2.set_xscale('log')
 ax1.set_yscale('log')
-fig.text(0.4,0.3, "60 %", ha="center",fontsize=17)
-fig.text(0.9,0.3, "90%", ha="center",fontsize=17)
+fig.text(0.4,0.3, "60 %", ha="center",fontsize=16)
+fig.text(0.9,0.3, "90%", ha="center",fontsize=16)
 
 size = [3,12,48,192,768,3072, 12288]
 SlowDown = [3.8128132028568045, 3.9942757009345793, 8.022554347826087, 9.698497267759564, 12.17308282208589, 12.374356659142212, 11.724158078763342]
@@ -122,7 +123,7 @@ for tick in ax2.yaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
 
 handles, labels = ax1.get_legend_handles_labels()
-plt.figlegend(handles, labels, loc='upper center', ncol=5, labelspacing=0.0, fontsize=16, frameon=False)
+plt.figlegend(handles, labels, loc='upper center', ncol=5, labelspacing=0.0, fontsize=14, frameon=False)
 
 SlowDown = [17.527766856693532, 17.6634009009009, 38.11494932432432, 52.20625, 73.07389053254438, 63.24658624229979, 47.88624551971326]
 ax2.plot(Flow_Size, SlowDown, '--', color='red', label='8')

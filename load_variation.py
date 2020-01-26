@@ -8,7 +8,7 @@ import subprocess
 import matplotlib.ticker as mticker
 from matplotlib.ticker import ScalarFormatter
 
-plt.figure(figsize=(5,3))
+plt.figure(figsize=(4,3))
 plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
 plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
@@ -47,7 +47,7 @@ for tick in ax.xaxis.get_major_ticks():
 plt.legend(bbox_to_anchor=(-0., 0.96, 1.0, 0.96), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
-plt.figure(figsize=(5,3))
+plt.figure(figsize=(4,3))
 plt.ylabel('FCT Slow Down\n99 pct (Size<3KB)', fontsize=16)
 plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
@@ -89,7 +89,7 @@ plt.tight_layout()
 
 #All links are equally congested
 
-plt.figure(figsize=(5,3))
+plt.figure(figsize=(4,3))
 plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
 plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
@@ -132,7 +132,7 @@ for tick in ax.xaxis.get_major_ticks():
 plt.legend(bbox_to_anchor=(-0., 0.96, 1.0, 0.96), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
-plt.figure(figsize=(5,3))
+plt.figure(figsize=(4,3))
 plt.ylabel('FCT Slow Down\n99 pct (Size<3KB)', fontsize=16)
 plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
