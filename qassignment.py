@@ -8,8 +8,8 @@ import subprocess
 import matplotlib.ticker as mticker
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down", fontsize=17)
-plt.xlabel("Flow Size (KB)", fontsize=17)
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
 plt.xscale('log')
 plt.yscale('log')
 
@@ -46,8 +46,8 @@ plt.tight_layout()
 
 
 plt.figure(figsize=(4,3))
-plt.ylabel("CDF", fontsize=17)
-plt.xlabel("Fraction of Collisions", fontsize=17)
+plt.ylabel("CDF", fontsize=16)
+plt.xlabel("Fraction of Collisions", fontsize=16)
 #plt.xscale('log')
 #plt.yscale('pl
 #plt.xlim([0,200])

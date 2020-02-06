@@ -32,12 +32,13 @@ for i in range(len(CDF)-1):
 	avg_flow_size += (CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])
 for i in range(len(CDF)-1):
 	CDF2.append(CDF2[i]+ (((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])))/avg_flow_size)
-	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i-1])) + Flow_Size[i+1]*(1-CDF[i+1]))
+	#uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + Flow_Size[i+1]*(1-CDF[i+1]))
+	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + (Flow_Size[i+1]-Flow_Size[i])*(1-CDF[i+1]))	
 speed=[]
 fraction=[]
 for i in range(len(CDF2)):
-	speed.append(Flow_Size[i]/250.0)
-	fraction.append(1 - (uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
+	speed.append(Flow_Size[i]/1500.0)
+	fraction.append((uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
 	#fraction.append(1-CDF2[i])
 plt.plot(speed,fraction,'-.', color='green', label='Google')
 Flow_Size = []
@@ -55,12 +56,13 @@ for i in range(len(CDF)-1):
 	avg_flow_size += (CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])
 for i in range(len(CDF)-1):
 	CDF2.append(CDF2[i]+ (((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])))/avg_flow_size)
-	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i-1])) + Flow_Size[i+1]*(1-CDF[i+1]))
+	#uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + Flow_Size[i+1]*(1-CDF[i+1]))
+	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + (Flow_Size[i+1]-Flow_Size[i])*(1-CDF[i+1]))
 speed=[]
 fraction=[]
 for i in range(len(CDF2)):
-	speed.append(Flow_Size[i]/250.0)
-	fraction.append(1 - (uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
+	speed.append(Flow_Size[i]/1500.0)
+	fraction.append((uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
 	#fraction.append(1-CDF2[i])
 plt.plot(speed,fraction,'-.', color='blue', label='FB_Hadoop')
 Flow_Size = [0, 100, 10000, 20000, 30000, 50000, 80000, 200000, 1000000, 2000000, 5000000, 10000000, 30000000]
@@ -72,12 +74,13 @@ for i in range(len(CDF)-1):
 	avg_flow_size += (CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])
 for i in range(len(CDF)-1):
 	CDF2.append(CDF2[i]+ (((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])))/avg_flow_size)
-	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i-1])) + Flow_Size[i+1]*(1-CDF[i+1]))
+	uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + (Flow_Size[i+1]-Flow_Size[i])*(1-CDF[i+1]))
+	#uncontrolled_Area.append(uncontrolled_Area[i] + ((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i+1]-Flow_Size[i])) + Flow_Size[i+1]*(1-CDF[i+1]))
 speed=[]
 fraction=[]
 for i in range(len(CDF2)):
-	speed.append(Flow_Size[i]/250.0)
-	fraction.append(1 - (uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
+	speed.append(Flow_Size[i]/1500.0)
+	fraction.append((uncontrolled_Area[i]/uncontrolled_Area[len(CDF2)-1]))
 	#fraction.append(1-CDF2[i])
 plt.plot(speed,fraction, '--', color='red', label='WebSearch')
 ax=plt.gca()

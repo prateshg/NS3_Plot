@@ -55,7 +55,7 @@ plt.tight_layout()
 
 fig, ax = plt.subplots(figsize=(3,3))
 plt.yscale('log')
-plt.ylim([0.1,11])
+plt.ylim([0.1,100])
 labels = ['8', '16', '32', '64', '128']
 collision = [9.7,2.4, 0.47, 0.1, 0.01]
 
@@ -70,10 +70,19 @@ rects1 = ax.bar(x + width/2, collision, width, label='collision')
 ax.set_ylabel('% of collisions', fontsize=16 )
 ax.set_xlabel('# Physical Q', fontsize=16 )
 #ax.set_title('Scores by group and gender')
-for tick in ax.xaxis.get_major_ticks():
-    tick.label.set_fontsize(14)
+ax.get_yaxis().set_ticks([0.01,0.1,1,10,100], minor=True)
+ax.get_yaxis().set_ticks([], minor=False)
+plt.ylim([0.01,100])
+ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_minor_formatter().set_scientific(False)
+ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_major_formatter().set_scientific(False)
 for tick in ax.yaxis.get_major_ticks():
-    tick.label.set_fontsize(14)
+	tick.label.set_fontsize(14)
+for tick in ax.yaxis.get_minor_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 
@@ -145,12 +154,12 @@ ax2.plot(Flow_Size, SlowDown, '--', color='orange', label='128')
 fig.tight_layout(rect=[0.0,0.1,1,0.9])
 
 
-plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down", fontsize=17)
-plt.xlabel("Flow Size (KB)", fontsize=17)
+plt.figure(figsize=(7,3))
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
 plt.xscale('log')
 plt.yscale('log')
-plt.gca().set_ylim(bottom=1)
+plt.gca().set_ylim(bottom=8)
 
 Flow_Size = [3,12,48,192,768,3072,12288]
 SlowDown = [12.85617517020111, 19.31632882882883, 45.804136029411765, 51.366587452471485, 37.70831151832461, 17.217796229802513, 11.738581031976745]
@@ -169,7 +178,7 @@ SlowDown = [8.861038249226795, 10.384747706422019, 36.29279513888889, 43.4735020
 plt.plot(Flow_Size, SlowDown, ':', color='black', label='16384')
 
 ax = plt.axes()
-ax.get_yaxis().set_ticks([1,2,4,8,16,32,64,128], minor=True)
+ax.get_yaxis().set_ticks([8,16,32,64], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
@@ -181,10 +190,10 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
+plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=5, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
-fig, ax = plt.subplots(figsize=(4,4))
+'''fig, ax = plt.subplots(figsize=(4,4))
 plt.yscale('log')
 plt.ylim([0.001,0.01])
 labels = ['1024', '2048', '4096', '8192', '16384']
@@ -209,15 +218,15 @@ ax.set_xticks(x)
 ax.set_xticklabels(labels)
 
 ax.legend(prop={'size': 16})
-plt.tight_layout()
+plt.tight_layout()'''
 
 
-plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down", fontsize=17)
-plt.xlabel("Flow Size (KB)", fontsize=17)
+plt.figure(figsize=(7,3))
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
 plt.xscale('log')
 plt.yscale('log')
-plt.gca().set_ylim(bottom=1)
+plt.gca().set_ylim(bottom=8)
 
 Flow_Size = [3,12,48,192,768,3072,12288]
 SlowDown = [8.923766595961975, 11.779556074766354, 36.96849315068493, 43.15830965909091, 35.872809278350516, 16.71843631948192, 11.761854988092088]
@@ -233,7 +242,7 @@ SlowDown = [9.164126805404566, 11.9225, 39.51241721854305, 44.89590643274854, 35
 plt.plot(Flow_Size, SlowDown, ':', color='black', label='192')
 
 ax = plt.axes()
-ax.get_yaxis().set_ticks([1,2,4,8,16,32,64,128], minor=True)
+ax.get_yaxis().set_ticks([8,16,32,64], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
@@ -245,7 +254,7 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 15}, frameon=False)
+plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=5, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
 plt.show()

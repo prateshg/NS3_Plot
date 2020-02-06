@@ -340,12 +340,18 @@ SlowDown = [65.612663670119218, 62.340771028037381, 48.514212328767123, 43.87293
 plt.plot(Flow_Size, SlowDown,  '-.', color='green')#, label='HPCC')
 
 SlowDown = [27.163855104666123, 26.366118421052633, 27.672185430463575, 37.515270618556698, 59.273804012345678, 53.780122494432071, 47.079254336081888]
-plt.plot(Flow_Size, SlowDown,  '--', color='red', label='HPCC + SFQ')
+plt.plot(Flow_Size, SlowDown,  '--', color='red', label='HPCC+SFQ')
 
 SlowDown = [36.847081243335047, 45.123967889908258, 24.057619863013699, 24.06639344262295, 35.409131355932203, 42.810354573484069, 35.726523323615162]
 plt.plot(Flow_Size, SlowDown, ':', color='black')#, label='HPCC + Perfect Retransmission')
+
+#SlowDown = [3.4556002414988507, 4.5433486238532108, 18.849751655629138, 36.950067567567565, 42.387974051896208, 20.24007723304231, 13.972763012690821]
+#plt.plot(Flow_Size, SlowDown, '--', color='orange', label='DCTCP+SS')
+
+#SlowDown = [1.045242463699495, 1.0502232142857142, 1.3301020408163264, 1.8505851063829788, 30.851995798319329, 12.27309718969555, 13.920889406487232]
+#plt.plot(Flow_Size, SlowDown, '-', color='purple', label='BFC+SFF')
 ax = plt.axes()
-ax.get_yaxis().set_ticks([8,16,32,64,128], minor=True)
+ax.get_yaxis().set_ticks([8,16,32,64], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
@@ -357,7 +363,7 @@ for tick in ax.yaxis.get_minor_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.xaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
-plt.legend(handlelength=1.5,bbox_to_anchor=(0.1, 1.02, 0.9, 1.02), loc=3, ncol=1, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
+plt.legend(handlelength=1.5,bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
 
@@ -379,6 +385,13 @@ plt.plot(Flow_Size, SlowDown,  '--', color='red')#, label='HPCC + SFQ')
 
 SlowDown = [2.634918775382693, 2.6974299065420562, 3.2298013245033115, 4.0952674897119339, 16.330216881594374, 37.763711890243904, 35.777601135557134]
 plt.plot(Flow_Size, SlowDown, ':', color='black', label='HPCC + Perfect Retrans.')
+
+#SlowDown = [2.9183782774480131, 3.6964130434782607, 8.0635906040268459, 11.124795081967212, 14.397446236559139, 15.688842226613966, 11.946356564810939]
+#plt.plot(Flow_Size, SlowDown, '--', color='orange')#, label='HPCC + Perfect Retrans.')
+
+
+#SlowDown = [1.0437876889341373, 1.0486363636363636, 1.326158940397351, 1.8032992565055761, 2.652922971114168, 4.9422853971386287, 14.243349710165418]
+#plt.plot(Flow_Size, SlowDown, '-', color='purple')#, label='BFC+SFF')
 ax = plt.axes()
 ax.get_yaxis().set_ticks([1,2,4,8,16,32], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)

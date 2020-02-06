@@ -54,7 +54,9 @@ for i in range(len(CDF)-1):
 for i in range(len(CDF)-1):
 	CDF2.append(CDF2[i]+ (((CDF[i+1]-CDF[i])*0.5*(Flow_Size[i]+Flow_Size[i+1])))/avg_flow_size)
 plt.plot(Flow_Size, CDF2, '--', color='red', label='WebSearch')
-
+plt.axvline(x=15000,color='black',linewidth=1.0)
+plt.axvline(x=60000,color='black',linewidth=1.0)
+plt.axvline(x=150000,color='black',linewidth=1.0)
 
 # for i in range (len(W3)):
 # 	print(W3[i])

@@ -14,24 +14,25 @@ plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
 Speed = [50,60,70,80,90]
 
-SlowDown = [2.91, 3.60, 4.75, 6.89, 12.88]
+SlowDown = [2.91, 3.50, 4.66, 6.45, 10.4]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 
-SlowDown = [5.56, 9.68, 30.07, 71.17, 113.54]
-SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
 
-SlowDown = [3.71,5.92, 13.25, 26.29, 50.2]
+SlowDown = [5.4, 8.9, 20.1, 40, 59]
+SlowDown = np.array(SlowDown)
+plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', label='HPCC', marker='s')
+
+SlowDown = [3.6,5.92, 12.2, 23, 40]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='red', label='DCQCN', marker='^')
 
-SlowDown = [4.03,5.14,7.12,10.3,19.17]
+SlowDown = [4.03,5.2,7.12,10,16.8]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='orange', label='DCTCP', marker='x')
 
 ax = plt.axes()
-ax.get_yaxis().set_ticks([2,4,8,16,32, 64], minor=True)
+ax.get_yaxis().set_ticks([4,8,16,32, 64], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.get_xaxis().set_ticks([50,60,70,80,90])
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
@@ -53,20 +54,20 @@ plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
 Speed = [50,60,70,80,90]
 
-SlowDown = [1.11, 1.14, 1.2, 1.32, 7.14]
+SlowDown = [1.11, 1.14, 1.2, 1.31, 5.0]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 
 
-SlowDown = [2.44, 2.66, 2.98, 3.4, 3.98]
+SlowDown = [2.44,2.65, 2.93, 3.23,3.61]
 SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
+plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', label='HPCC', marker='s')
 
-SlowDown = [4.02, 4.533, 5.17, 5.87, 6.83]
+SlowDown = [4.02, 4.6, 5.2, 5.87, 6.6]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='red', label='DCQCN', marker='^')
 
-SlowDown = [3.1,3.44,3.94, 4.56, 5.63]
+SlowDown = [3.1,3.5,3.94, 4.56, 5.63]
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='orange', label='DCTCP', marker='x')
 plt.legend(bbox_to_anchor=(-0., 0.96, 1.0, 0.96), loc=3, ncol=2, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
@@ -103,7 +104,7 @@ plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 SlowDown = [4.95, 7.47, 10.8, 14.65, 23.35]
 #SlowDown = [6.7, 11.4, 21, 30.7, 41.7]
 SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
+plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', label='HPCC', marker='s')
 
 SlowDown = [3.5, 4.9, 7.6, 12.1, 19]
 #SlowDown = [5.3, 8.1, 12.7, 19, 27.7]
@@ -145,7 +146,7 @@ plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 
 SlowDown = [2.54, 2.7, 2.84,2.95, 3.0]
 SlowDown = np.array(SlowDown)
-plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
+plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', label='HPCC', marker='s')
 
 SlowDown = [4.94, 5.6, 6.3, 6.9, 7.4]
 SlowDown = np.array(SlowDown)
