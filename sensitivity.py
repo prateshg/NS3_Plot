@@ -257,4 +257,43 @@ for tick in ax.xaxis.get_major_ticks():
 plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=5, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
+
+plt.figure(figsize=(7,3))
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
+plt.xscale('log')
+plt.yscale('log')
+plt.gca().set_ylim(bottom=8)
+
+Flow_Size = [3,12,48,192,768,3072,12288]
+SlowDown = [13.157926853081308, 19.038977272727273, 36.45405172413793, 48.08440934065934, 39.65692041522491, 19.997446442234125, 12.69481594598939]
+plt.plot(Flow_Size, SlowDown, '--', color='red', label='25X')
+
+SlowDown = [7.289150943396226, 14.835951327433628, 29.486157718120804, 42.86407942238267, 38.40849358974359, 21.53022173324306, 13.18414118412491]
+plt.plot(Flow_Size, SlowDown,  '-.', color='green', label='50X')
+
+SlowDown = [3.8660902902746264, 12.101914414414415, 25.73079044117647, 38.46059160305344, 35.874466463414635, 19.80738245412844, 12.591385135135136]
+plt.plot(Flow_Size, SlowDown, '-', color='blue', label='100X')
+
+SlowDown = [1.7167452830188679, 7.326168224299066, 26.61222627737226, 37.02036163522013, 35.33770695364238, 20.683272762050496, 13.1904620147654]
+plt.plot(Flow_Size, SlowDown, ':', color='orange', label='200X')
+
+SlowDown = [1.8357190347686652, 7.93536036036036, 32.36179054054054, 46.5646408839779, 37.80108024691358, 17.576265450264863, 13.25542191992922]
+plt.plot(Flow_Size, SlowDown, ':', color='black', label='IdealFQ')
+
+ax = plt.axes()
+ax.get_yaxis().set_ticks([1, 2, 4, 8,16,32,64], minor=True)
+ax.get_yaxis().set_ticks([], minor=False)
+ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_minor_formatter().set_scientific(False)
+ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_major_formatter().set_scientific(False)
+for tick in ax.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.yaxis.get_minor_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+plt.legend(bbox_to_anchor=(-0.1, 1.02, 1.1, 1.02), loc=3, ncol=5, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
+plt.tight_layout()
 plt.show()

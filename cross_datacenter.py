@@ -17,7 +17,7 @@ plt.yscale('log')
 plt.gca().set_ylim(bottom=1)
 
 Flow_Size = [3,12,48,192,768,3072,12288]
-SlowDown = [2.0612987884289042, 2.3779166666666667, 4.094798657718121, 5.748934977578475, 8.124883177570094, 9.613646895273401, 9.405237814465409]
+SlowDown = [2.0925860994234067, 2.3875, 4.092030201342282, 5.871381578947369, 8.250862068965517, 9.078923551959114, 8.74932689980639]
 plt.plot(Flow_Size, SlowDown, '-', color='blue', label='BFC')
 
 SlowDown = [7.380878532935292, 6.014189189189189, 7.2712121212121215, 7.229960317460318, 21.940391969407266, 31.93050296532847, 31.83663692558899]
@@ -27,7 +27,7 @@ SlowDown = [6.245842788950622, 5.750462962962963, 5.5054227941176475, 5.07769607
 plt.plot(Flow_Size, SlowDown, '--', color='red', label='DCQCN')
 
 ax = plt.axes()
-ax.get_yaxis().set_ticks([1,2,4,8,16,32,64], minor=True)
+ax.get_yaxis().set_ticks([2,4,8,16,32,64], minor=True)
 ax.get_yaxis().set_ticks([], minor=False)
 ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
 ax.yaxis.get_minor_formatter().set_scientific(False)
@@ -43,11 +43,11 @@ plt.legend(handlelength=1.5,bbox_to_anchor=(-0.3, 1.02, 1.3, 1.02), loc=3, ncol=
 plt.tight_layout()
 
 
-fig, ax = plt.subplots(figsize=(3,3))
+fig, ax = plt.subplots(figsize=(4,3))
 labels = ['BFC', 'HPCC', 'DCQCN']
 #plt.yscale('log')
 plt.xlim([-0.5,2.5])
-ToR_spine = [99, 23, 22]#, 183]
+ToR_spine = [99.0, 69.8, 21.4]#, 183]
 
 x = np.arange(len(labels))  # the label locations
 width = 0.4  # the width of the bars
