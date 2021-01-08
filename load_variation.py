@@ -9,17 +9,20 @@ import matplotlib.ticker as mticker
 from matplotlib.ticker import ScalarFormatter
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+#plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+plt.ylabel("FCT Slow Down\nAverage (Size>3MB)", fontsize=16)
 plt.xlabel("Load (%)", fontsize=16)
 plt.yscale('log')
 Speed = [50,60,70,80,90, 95]
 
-SlowDown = [3.1, 3.8, 4.98, 6.8, 11, 15.4]
+#SlowDown = [3.1, 3.8, 4.98, 6.8, 11, 15.4]#Median
+SlowDown = [3.38, 4.2, 5.67, 8.15, 13.34, 18.46]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC 32', marker='o')
 
 
-SlowDown = [5.4, 8.9, 20.1, 40, 59]
+#SlowDown = [5.4, 8.9, 20.1, 40, 59]#Median
+SlowDown = [6.58, 11.07, 24.1]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', marker='s')# label='HPCC', marker='s')
 
@@ -27,11 +30,13 @@ plt.plot(Speed[0:3], SlowDown[0:3],  '-.', color='green', marker='s')# label='HP
 #SlowDown = np.array(SlowDown)
 #plt.plot(Speed[0:5], SlowDown[0:5], '--', color='red', label='DCQCN', marker='^')
 
-SlowDown = [3.14, 3.83, 5, 6.85, 11.4, 16]
+#SlowDown = [3.14, 3.83, 5, 6.85, 11.4, 16]#Median
+SlowDown = [3.37, 4.21, 5.67, 8.15, 13.61, 18.9]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='red', label='BFC 128', marker='^')
 
-SlowDown = [4.03,5.2,7.12,10,16.8, 22]
+#SlowDown = [4.03,5.2,7.12,10,16.8, 22]#Median
+SlowDown = [4.23, 5.5, 7.63, 11, 18.61, 24.73]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='orange', marker='x')#label='DCTCP', marker='x')
 

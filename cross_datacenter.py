@@ -42,6 +42,41 @@ for tick in ax.xaxis.get_major_ticks():
 plt.legend(handlelength=1.5,bbox_to_anchor=(-0.3, 1.02, 1.3, 1.02), loc=3, ncol=3, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
 plt.tight_layout()
 
+#Without inter
+plt.figure(figsize=(4,3))
+plt.ylabel("FCT Slow Down", fontsize=16)
+plt.xlabel("Flow Size (KB)", fontsize=16)
+plt.xscale('log')
+plt.yscale('log')
+plt.gca().set_ylim(bottom=1)
+
+Flow_Size = [3,12,48,192,768,3072,12288]
+SlowDown = [2.0767219087917255, 2.2975877192982455, 3.589095744680851, 4.9144736842105265, 6.9779456193353475, 7.556321633237823, 7.123929292002935]
+plt.plot(Flow_Size, SlowDown, '-', color='blue', label='BFC')
+
+SlowDown = [2.77187660566776, 2.777927927927928, 3.466758241758242, 4.1457474226804125, 10.65921875, 22.4406367260788, 19.22578515625]
+plt.plot(Flow_Size, SlowDown,  '-.', color='green', label='HPCC')
+
+SlowDown = [4.810876209882832, 4.494204545454545, 4.4314024390243905, 4.254627071823204, 4.55365671641791, 9.550307765151516, 28.494298651147613]
+plt.plot(Flow_Size, SlowDown, '--', color='red', label='DCQCN')
+
+ax = plt.axes()
+ax.get_yaxis().set_ticks([2,4,8,16,32,64], minor=True)
+ax.get_yaxis().set_ticks([], minor=False)
+ax.yaxis.set_minor_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_minor_formatter().set_scientific(False)
+ax.yaxis.set_major_formatter(mticker.ScalarFormatter())
+ax.yaxis.get_major_formatter().set_scientific(False)
+for tick in ax.yaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.yaxis.get_minor_ticks():
+	tick.label.set_fontsize(14)
+for tick in ax.xaxis.get_major_ticks():
+	tick.label.set_fontsize(14)
+plt.legend(handlelength=1.5,bbox_to_anchor=(-0.3, 1.02, 1.3, 1.02), loc=3, ncol=3, mode="expand", borderaxespad=0., prop={'size': 14}, frameon=False)
+plt.tight_layout()
+
+
 
 fig, ax = plt.subplots(figsize=(4,3))
 labels = ['BFC', 'HPCC', 'DCQCN']

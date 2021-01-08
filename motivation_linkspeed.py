@@ -177,12 +177,15 @@ Speed = [10,40,100]
 #plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC', marker='o')
 
 SlowDown = [18.17,19.4,19.7]
+SlowDown = [21, 23.1, 23.9]
 plt.plot(Speed, SlowDown,  '-.', color='green',  marker='s')
 
 SlowDown = [21.8,25.9,29.8]
+SlowDown = [20.6,24.7,30.4]
 plt.plot(Speed, SlowDown, '--', color='red', label='DCQCN',marker='^')
 ax = plt.axes()
 ax.xaxis.set_ticks(Speed)
+ax.yaxis.set_ticks([20,25,30])
 for tick in ax.yaxis.get_major_ticks():
 	tick.label.set_fontsize(14)
 for tick in ax.yaxis.get_minor_ticks():
@@ -205,11 +208,11 @@ Speed = [10,40,100]
 #plt.plot(Speed, SlowDown/6250.0,  '-', color='blue', label='BFC', marker='o')
 
 SlowDown = [170893,151914,139333]
-SlowDown = np.array(SlowDown)
+SlowDown = 1.03*np.array(SlowDown)
 plt.plot(Speed, SlowDown/6250.0,  '-.', color='green',label='HPCC', marker='s')
 
 SlowDown = [201208,118933,60478]
-SlowDown = np.array(SlowDown)
+SlowDown = 1.03*np.array(SlowDown)
 plt.plot(Speed, SlowDown/6250.0, '--', color='red',  marker='^')
 ax = plt.axes()
 ax.xaxis.set_ticks(Speed)

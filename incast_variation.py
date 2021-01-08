@@ -199,25 +199,30 @@ fig.tight_layout(rect=[0.0,0.1,1,0.9])
 
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+#plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+plt.ylabel("FCT Slow Down\nAverage (Size>3MB)", fontsize=16)
 plt.xlabel("Incast Degree", fontsize=16)
 plt.yscale('log')
 Speed = [1,2,3,4,5,6]
 
-SlowDown = [3.81, 3.99, 4.22, 5.65, 7.63, 11.27]
+#SlowDown = [3.81, 3.99, 4.22, 5.65, 7.63, 11.27]#Median
+SlowDown = [4.2, 4.6, 4.95, 6.59, 8.9, 13.65]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC 32', marker='o')
 
 
-SlowDown = [8.09, 10, 18.4, 19.6, 18.4, 17.3]
+#SlowDown = [8.09, 10, 18.4, 19.6, 18.4, 17.3]#Median
+SlowDown = [9.9, 12.51, 24.27, 25.81, 25.03, 26.89]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-.', color='green', marker='s')#label='HPCC', marker='s')
 
-SlowDown = [3.83, 3.91, 3.92, 4, 4.13, 4.92]
+#SlowDown = [3.83, 3.91, 3.92, 4, 4.13, 4.92]#Median
+SlowDown = [4.17, 4.31, 4.44, 4.52, 4.71, 5.63]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='red', label='BFC 128', marker='^')
 
-SlowDown = [5.12, 6.9, 14, 15, 14.86, 17.8]
+#SlowDown = [5.12, 6.9, 14, 15, 14.86, 17.8]#Median
+SlowDown = [5.45, 7.96, 16.88, 17.62, 17.86, 21.52]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='orange', marker='x')#label='DCTCP', marker='x')
 
@@ -292,25 +297,30 @@ plt.tight_layout()
 
 
 plt.figure(figsize=(4,3))
-plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+#plt.ylabel("FCT Slow Down\nMedian (Size>3MB)", fontsize=16)
+plt.ylabel("FCT Slow Down\nAverage (Size>3MB)", fontsize=16)
 plt.xlabel("Incast Degree", fontsize=16)
 plt.yscale('log')
 Speed = [1,2,3,4,5,6]
 
-SlowDown = [3.81, 3.99, 4.22, 5.65, 7.63, 11.27]
+#SlowDown = [3.81, 3.99, 4.22, 5.65, 7.63, 11.27]#Median
+SlowDown = [4.2, 4.6, 4.95, 6.59, 8.9, 13.65]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-', color='blue', label='BFC + Flow FQ', marker='o')
 
 
-SlowDown = [8.09, 10, 18.4, 19.6, 18.4, 17.3]
+#SlowDown = [8.09, 10, 18.4, 19.6, 18.4, 17.3]#Median
+SlowDown = [9.9, 12.51, 24.27, 25.81, 25.03, 26.89]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown,  '-.', color='green', label='HPCC', marker='s')
 
-SlowDown = [3.67, 3.74, 3.72, 3.79, 3.87, 3.89]
+#SlowDown = [3.67, 3.74, 3.72, 3.79, 3.87, 3.89]#Median
+SlowDown = [4.01, 4.16, 4.16, 4.25, 4.24, 4.61]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='red', marker='^')
 
-SlowDown = [5.12, 6.9, 14, 15, 14.86, 17.8]
+#SlowDown = [5.12, 6.9, 14, 15, 14.86, 17.8]#Median
+SlowDown = [5.45, 7.96, 16.88, 17.62, 17.86, 21.52]#Avg
 SlowDown = np.array(SlowDown)
 plt.plot(Speed, SlowDown, '--', color='orange',  marker='x')
 
